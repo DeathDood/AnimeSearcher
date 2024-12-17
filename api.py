@@ -51,7 +51,6 @@ def fetch_anime_by_title(anime_title):
         averageScore
         countryOfOrigin	
         episodes
-        seasonYear
         }
         }
     }
