@@ -28,6 +28,7 @@ from api import fetch_anime_by_genre, fetch_anime_by_title
 
 # source venv/bin/activate
 
+
 def main():
     anime_title = get_anime_title()  # Get anime title from user input
     data = fetch_anime_by_title(anime_title)  # Fetch anime details by title
@@ -75,6 +76,9 @@ def display_and_choose_anime(data):
         status = media.get("status", "Unknown Status")
         genre = ", ".join(media.get("genres", []))
         season_year = media.get("seasonYear", {})
+        # If the english title is unavailable it takes a romaji title instead
+        if title == None:
+            title = media.get("title", {}).get("romaji", "Unknow Title")
         print(
             f"{index} | ID: {anime_id}, Title: {title}, Status: {status}, Genre: {genre}, Year Released: {season_year}"
         )
@@ -100,6 +104,10 @@ def print_anime_details(anime):
     native = anime.get("title", {}).get("native", "Unknown Native Title")
     status = anime.get("status", "Unknown Status")
     season_year = anime.get("seasonYear", {})
+    popularity = anime.get("popularity", "No popularity data available ")
+    average_score = anime.get("averageScore", "No Score")
+    amount_of_episodes = anime.get("episodes", "")
+    country_origin = anime.get("countryOfOrigin", "Unknown Origin")
     genre = ", ".join(anime.get("genres", []))
 
     print(f"ID: {anime_id}")
@@ -107,7 +115,11 @@ def print_anime_details(anime):
     print(f"Title (Romaji): {romaji}")
     print(f"Title (Native): {native}")
     print(f"Status: {status}")
+    print(f"Episodes: {amount_of_episodes}")
     print(f"Year Released: {season_year}")
+    print(f"Popularity: {popularity}")
+    print(f"Country Of Origin: {country_origin}")
+    print(f"Average Score: {average_score}")
     print(f"Genre: {genre}", end="\n" * 2)
 
 

@@ -13,6 +13,7 @@ def fetch_anime_by_genre(genre):
         }
         status
         genres
+        popularity
         }
     }
     }
@@ -46,6 +47,12 @@ def fetch_anime_by_title(anime_title):
         status
         genres
         seasonYear
+        popularity
+        averageScore
+        countryOfOrigin	
+        episodes
+        seasonYear
+        }
         }
     }
     }
